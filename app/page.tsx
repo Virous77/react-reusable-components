@@ -1,8 +1,6 @@
-import ThemeToggle from "@/components/theme";
-import React from "react";
-
 const HomePage = () => {
-  return <ThemeToggle />;
+  const p = "cool";
+  return <main>Home</main>;
 };
 
 export default HomePage;
