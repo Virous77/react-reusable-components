@@ -67,3 +67,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.dropdown-search {
+  min-height: fit-content;
+  max-height: calc(100vh - 200px);
+}
