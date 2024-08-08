@@ -2,6 +2,9 @@
 
 import React from "react";
 import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
+import { users } from "@/utils/data";
+import { Button } from "../ui/button";
+import Image from "next/image";
 
 type TRRSearch = {
   placeholder?: string;
@@ -20,7 +23,7 @@ const RRCSearch: React.FC<TRRSearch> = (props) => {
           " data-[visible=true]:opacity-100 opacity-0 pr-1 size-[20px] hover:opacity-100",
       }}
       className="mt-2 border"
-      defaultItems={[]}
+      defaultItems={users}
       inputProps={{
         classNames: {
           input: "ml-1 bg-transparent ",
@@ -51,7 +54,30 @@ const RRCSearch: React.FC<TRRSearch> = (props) => {
       variant="bordered"
       aria-label="Select an employee"
     >
-      {(item) => <AutocompleteItem key={item}></AutocompleteItem>}
+      {(item) => (
+        <AutocompleteItem key={item.id} textValue={item.name}>
+          <div className="flex justify-between items-center">
+            <div className="flex gap-2 items-center">
+              <Image
+                alt={item.name}
+                className="flex-shrink-0 w-[32px] h-[32px] rounded-full"
+                src={item.avatar}
+                width={32}
+                height={32}
+              />
+              <div className="flex flex-col">
+                <span className="text-base">{item.name}</span>
+                <span className="text-xs text-muted-foreground">
+                  {item.team}
+                </span>
+              </div>
+            </div>
+            <Button className=" absolute right-2 bg-transparent hover:bg-transparent  text-foreground">
+              Add
+            </Button>
+          </div>
+        </AutocompleteItem>
+      )}
     </Autocomplete>
   );
 };
